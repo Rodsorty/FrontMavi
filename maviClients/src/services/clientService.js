@@ -13,14 +13,12 @@ export const getClients = (callback) => {
             if (callback) callback(data); // Llama al callback con los datos recibidos
         },
         error: function(xhr, status, error) {
-            console.error('Error al obtener clientes:', error);
-            const errorDiv = document.createElement('div');
-            errorDiv.style.color = 'red';
-            errorDiv.textContent = 'Error al obtener clientes';
-            document.body.appendChild(errorDiv);
+          console.error('Error al crear cliente:', error);
+          if (callback) callback(error, null);
         }
     });
 };
+
 
 // Eliminar cliente
 export const deleteClient = (id, callback) => {
@@ -35,12 +33,8 @@ export const deleteClient = (id, callback) => {
             if (callback) callback(null, response);
         },
         error: function(xhr, status, error) {
-            console.error('Error al eliminar cliente:', error);
-            const errorDiv = document.createElement('div');
-            errorDiv.style.color = 'red';
-            errorDiv.textContent = 'Error al eliminar cliente';
-            document.body.appendChild(errorDiv);
-            if (callback) callback(error, null);
+          console.error('Error al eliminar cliente:', error);
+          if (callback) callback(error, null);
         }
     });
 };

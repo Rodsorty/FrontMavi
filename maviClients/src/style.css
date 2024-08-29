@@ -13,6 +13,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+p{
+  color : black;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -29,5 +33,5 @@ html, body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow: hidden; /* Bloquear scroll */
 }
-
