@@ -15,7 +15,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { logout as authLogout } from '../services/authService'; 
-import { eventBus } from '../services/eventBus'; // Importar el Event Bus
+import { eventBus } from '../services/eventBus'; 
 
 const emit = defineEmits(['logoutSuccess']);
 

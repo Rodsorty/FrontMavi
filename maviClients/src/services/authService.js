@@ -32,6 +32,9 @@ export const login = (email, password, callback) => {
     });
 };
 
+
+
+
 /**
  * Verifica un token desde el almacenamiento del navegador
  */

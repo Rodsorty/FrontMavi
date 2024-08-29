@@ -35,3 +35,7 @@ html, body {
   min-height: 100vh;
   overflow: hidden; /* Bloquear scroll */
 }
+
+span{
+  color: black;
+}

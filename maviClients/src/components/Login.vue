@@ -13,8 +13,9 @@
           <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
         </div>
         <button type="submit">Iniciar Sesión</button>
+        <button type="submit" class='registro'>Crear una cuenta</button>
       </form>
-    </div>
+    </div>    
   </div>
 </template>
 
@@ -44,69 +45,4 @@ const handleLogin = () => {
 
 
 
-<style scoped>
-.login-container {
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f8f9fa;
-}
-
-.login-box {
-  border: 1px solid #ced4da;
-  border-radius: 8px;
-  padding: 2rem;
-  background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 300px;
-}
-
-h2 {
-  margin-bottom: 1.5rem;
-  color: #343a40;
-}
-
-.form-group {
-  margin-bottom: 1rem;
-  text-align: left;
-}
-
-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #495057;
-}
-
-input {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 1rem;
-}
-
-button {
-  width: 100%;
-  padding: 0.7rem;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: white;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-top: 1rem;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-.error-message {
-  color: #dc3545;
-  font-size: 0.875rem;
-  margin-top: 0.5rem;
-}
-</style>
+<style scoped src="../styles/login.css"></style>
