@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 const LOGIN_URL = 'https://d2ch8ltrwj.execute-api.us-east-1.amazonaws.com/prod/login';
 const VERIFY_URL = 'https://d2ch8ltrwj.execute-api.us-east-1.amazonaws.com/prod/verify';
-const LOGOUT_URL = 'https://d2ch8ltrwj.execute-api.us-east-1.amazonaws.com/prod/logout'; // URL para cerrar sesión
+const LOGOUT_URL = 'https://d2ch8ltrwj.execute-api.us-east-1.amazonaws.com/prod/logout'; 
 const API_KEY = 'NThxI7cLCM8tv0P4iLbVD1Vi7lPSvVPL1zETpxxn';
 
 /**
@@ -27,7 +27,7 @@ export const login = (email, password, callback) => {
         error: function(xhr, status, error) {
             console.error('Error en login:', error);
             const response = JSON.parse(xhr.responseText);
-            if (callback) callback(response.message, null); // Pasar el mensaje de error
+            if (callback) callback(response.message, null); 
         }
     });
 };
