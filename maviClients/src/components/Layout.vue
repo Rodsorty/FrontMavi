@@ -31,7 +31,7 @@ const checkToken = () => {
 
 // Función para manejar el cierre de sesión
 const handleLogout = () => {
-  isLoading.value = true;  
+  isLoading.value = true;  // Muestra el componente Loading
   authLogout((error, response) => {
     isLoading.value = false;  
     if (!error) {

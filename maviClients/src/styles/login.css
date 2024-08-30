@@ -16,7 +16,7 @@
   padding: 2rem;
   background-color: #ffffff;
   text-align: center;
-  min-width: 97%;
+  width: 70%;
 }
 
 h2 {
@@ -72,5 +72,17 @@ button:hover {
   .login-container {
     width: 105%;
     max-width: none; /* Elimina el max-width para pantallas pequeñas */
+  }
+  .login-box  {
+    min-width: none; 
+    width: 97%;
+  }
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (min-width: 600px) {
+  .login-box  {
+    width: 20%;
+    min-width: none; 
   }
 }

@@ -97,8 +97,15 @@ export const verifyToken = (callback) => {
             if (callback) callback(null, response);
         },
         error: function(xhr, status, error) {
-            console.error('Error al verificar token:', error);
-            if (callback) callback(error, null);
+            console.error('Error en login:', error);
+            let errorMessage = 'An unknown error occurred.';
+            try {
+                const response = JSON.parse(xhr.responseText);
+                errorMessage = response.message || errorMessage;
+            } catch (e) {
+                errorMessage = error;
+            }
+            if (callback) callback(errorMessage, null);
         }
     });
 };

@@ -27,6 +27,7 @@ const isLoading = ref(true);
 const checkAuthentication = () => {
   verifyToken((error, response) => {
     if (error) {
+      console.log('ERROR sadad')
       isAuthenticated.value = false;
     } else {
       isAuthenticated.value = true;
