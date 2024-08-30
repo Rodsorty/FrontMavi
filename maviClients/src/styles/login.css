@@ -4,7 +4,6 @@
 
 .login-container {
   width: 100vw;
-  height: 89vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,14 +11,12 @@
 
 /* Caja de login */
 .login-box {
-  border: 1px solid #ced4da;
   border-radius: 20px;
+  margin-left: 10px;
   padding: 2rem;
   background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 100%;
-  max-width: 300px;
+  min-width: 97%;
 }
 
 h2 {
@@ -39,11 +36,13 @@ label {
 
 input {
   width: 100%;
+  background-color: white;
   padding: 0.5rem;
   border: 1px solid #ced4da;
   border-radius: 4px;
   box-sizing: border-box;
   font-size: 1rem;
+  color: black;
 }
 
 button {
@@ -71,7 +70,7 @@ button:hover {
 /* Ajustes para pantallas pequeñas */
 @media (max-width: 600px) {
   .login-container {
-    width: 99%;
+    width: 105%;
     max-width: none; /* Elimina el max-width para pantallas pequeñas */
   }
 }

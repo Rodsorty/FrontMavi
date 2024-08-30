@@ -28,8 +28,8 @@
         <button type="button" class="registro" @click="toggleCrearCuenta">
           {{
             crearCuenta
-              ? "Ya tienes cuenta? Iniciar sesión"
-              : "Crear una cuenta"
+              ? "Ya tienes cuenta?"
+              : "Registrarse"
           }}
         </button>
       </form>
