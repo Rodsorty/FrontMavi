@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="openModal" class="add-client-btn">Nuevo Cliente</button>
+    <button @click="openModal" class="add-client-btn">Nuevo</button>
     <input
       v-model="searchQuery"
       @input="searchClients"

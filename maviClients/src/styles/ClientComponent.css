@@ -34,7 +34,6 @@
     position: fixed;
     top: 8rem;
     left: 1.2rem;
-    min-width: 350px; 
     height: 30px;
     background-color: #f8f9fa;
     padding: 0.5em 1em;
@@ -110,7 +109,6 @@
   }
   
   .add-client-btn {
-    width: 200px;
     margin-bottom: 1rem;
     border: none;
     border-radius: 8px;
@@ -145,3 +143,21 @@
     background: #c82333; 
   }
   
+
+  /* Ajustes para pantallas pequeñas */
+@media (max-width: 600px) {
+  .clients-container {
+    width: 85%;
+    max-width: none; 
+  }
+  .search-input {   
+    width: none; 
+    width: 290px;     
+  }
+}
+
+@media (min-width: 600px) {
+  .search-input {    
+    width: 700px;     
+  }
+}

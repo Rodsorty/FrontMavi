@@ -3,7 +3,7 @@
 }
 
 .login-container {
-  width: 97vw;
+  width: 100vw;
   height: 89vh;
   display: flex;
   justify-content: center;
@@ -13,7 +13,7 @@
 /* Caja de login */
 .login-box {
   border: 1px solid #ced4da;
-  border-radius: 8px;
+  border-radius: 20px;
   padding: 2rem;
   background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -70,8 +70,8 @@ button:hover {
 
 /* Ajustes para pantallas pequeñas */
 @media (max-width: 600px) {
-  .login-box {
-    width: 90%;
+  .login-container {
+    width: 99%;
     max-width: none; /* Elimina el max-width para pantallas pequeñas */
   }
 }
