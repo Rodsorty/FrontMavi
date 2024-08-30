@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
+const url = "http://44.201.246.73:3000/api/clientes";
 // const url = "http://localhost:3000/api/clientes";
-const url = "http://localhost:3000/api/clientes";
 
 // Obtener clientes
 export const getClients = (callback) => {
