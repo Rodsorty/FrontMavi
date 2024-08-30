@@ -75,7 +75,7 @@ const validateForm = () => {
 const saveClient = () => {
   if (validateForm()) {
     if (props.onSave) {
-      props.onSave({ ...form.value, id: props.client?.id }); // Asegúrate de que el id se pase si está en modo edición
+      props.onSave({ ...form.value, id: props.client?.id }); 
     }
     closeModal();
   }
@@ -136,14 +136,16 @@ const saveClient = () => {
 }
 
 .modal-content button {
+  color : white;
   padding: 10px;
   border-radius: 5px;
+  border: 1px solid #ccc;
   font-size: 10px;
   margin-right: 10px;
 }
 
 .guardar {
-  background: blue;
+  background: green;
 }
 
 .cancelar {

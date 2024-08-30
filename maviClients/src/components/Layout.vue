@@ -9,6 +9,7 @@
     <main class="main-content">
       <slot></slot>
     </main>
+    <Loading :show="isLoading" />
   </div>
 </template>
 
@@ -16,10 +17,12 @@
 import { ref, onMounted } from 'vue';
 import { logout as authLogout } from '../services/authService'; 
 import { eventBus } from '../services/eventBus'; 
+import Loading from '../utils/Loading.vue'; 
 
 const emit = defineEmits(['logoutSuccess']);
 
 const token = ref(localStorage.getItem('token'));
+const isLoading = ref(false);  
 
 // Función para verificar el token
 const checkToken = () => {
@@ -28,11 +31,15 @@ const checkToken = () => {
 
 // Función para manejar el cierre de sesión
 const handleLogout = () => {
+  isLoading.value = true;  
   authLogout((error, response) => {
+    isLoading.value = false;  
     if (!error) {
       localStorage.removeItem('token');
       token.value = null;
-      emit('logoutSuccess'); 
+      emit('logoutSuccess');      
+    } else {
+      console.error('Error al cerrar sesión:', error);
     }
   });
 };
@@ -46,12 +53,6 @@ onMounted(() => {
   checkToken();
 });
 </script>
-
-<style scoped>
-/* Tus estilos aquí */
-</style>
-
-
 
 <style scoped>
 .layout {

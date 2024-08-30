@@ -3,13 +3,14 @@
 }
 
 .login-container {
-  width: 100vw;
+  width: 97vw;
+  height: 89vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f8f9fa;
 }
 
+/* Caja de login */
 .login-box {
   border: 1px solid #ced4da;
   border-radius: 8px;
@@ -17,7 +18,8 @@
   background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
 }
 
 h2 {
@@ -32,7 +34,6 @@ h2 {
 
 label {
   display: block;
-  margin-bottom: 0.5rem;
   color: #495057;
 }
 
@@ -65,4 +66,12 @@ button:hover {
   color: #dc3545;
   font-size: 0.875rem;
   margin-top: 0.5rem;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 600px) {
+  .login-box {
+    width: 90%;
+    max-width: none; /* Elimina el max-width para pantallas pequeñas */
+  }
 }

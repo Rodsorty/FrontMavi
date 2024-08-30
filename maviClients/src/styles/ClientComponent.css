@@ -29,11 +29,13 @@
     background-color: #dc3545; /* Rojo */
   }
   
-  
+ 
   .search-input {
-    flex: 1; 
-    margin-left : 5px;
-    width: 300px;
+    position: fixed;
+    top: 8rem;
+    left: 1.2rem;
+    min-width: 350px; 
+    height: 30px;
     background-color: #f8f9fa;
     padding: 0.5em 1em;
     border: 1px solid #ced4da;
@@ -41,17 +43,27 @@
     font-size: 1em;
     color: #495057;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000; 
   }
+
 
   
   .clients-container {
+    max-height: 75%;
+    position: fixed;
+    top: 8rem;
     display: flex;
+    width: 100%;
     flex-wrap: wrap;
     gap: 1rem;
     color: #495057;
+    padding-left: 10px;
+    margin-top: 4rem;
+    overflow-y: auto;
   }
   
   .client-card {
+    height: 150px;
     border: 1px solid #e9ecef;
     border-radius: 8px;
     padding: 1.5rem;

@@ -1,9 +1,30 @@
 import $ from 'jquery';
 
-const LOGIN_URL = 'https://d2ch8ltrwj.execute-api.us-east-1.amazonaws.com/prod/login';
-const VERIFY_URL = 'https://d2ch8ltrwj.execute-api.us-east-1.amazonaws.com/prod/verify';
-const LOGOUT_URL = 'https://d2ch8ltrwj.execute-api.us-east-1.amazonaws.com/prod/logout'; 
-const API_KEY = 'NThxI7cLCM8tv0P4iLbVD1Vi7lPSvVPL1zETpxxn';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_KEY = import.meta.env.VITE_API_KEY;
+
+//==========================================
+//====USO DE MI SERVICIO DE LOGIN===========
+//==========================================
+
+const LOGIN_URL = `${API_BASE_URL}/login`;
+const REGISTER_URL = `${API_BASE_URL}/register`;
+const VERIFY_URL = `${API_BASE_URL}/verify`;
+const LOGOUT_URL = `${API_BASE_URL}/logout`;
+
+
+const getHeaders = (token = null) => {
+    const headers = {
+        'Content-Type': 'application/json',
+        'x-api-key': API_KEY
+    };
+
+    if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+    }
+
+    return headers;
+};
 
 /**
  * Inicio de sesión
@@ -12,22 +33,22 @@ export const login = (email, password, callback) => {
     $.ajax({
         url: LOGIN_URL,
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': API_KEY
-        },
-        data: JSON.stringify({
-            email,
-            password
-        }),
+        headers: getHeaders(),
+        data: JSON.stringify({ email, password }),
         success: function(response) {
             localStorage.setItem('token', response.token);
             if (callback) callback(null, response);
         },
         error: function(xhr, status, error) {
             console.error('Error en login:', error);
-            const response = JSON.parse(xhr.responseText);
-            if (callback) callback(response.message, null); 
+            let errorMessage = 'An unknown error occurred.';
+            try {
+                const response = JSON.parse(xhr.responseText);
+                errorMessage = response.message || errorMessage;
+            } catch (e) {
+                errorMessage = error;
+            }
+            if (callback) callback(errorMessage, null);
         }
     });
 };
@@ -36,10 +57,31 @@ export const login = (email, password, callback) => {
 
 
 /**
+ * Registro
+ */
+export const register = (email, password, username, name, callback) => {
+    $.ajax({
+        url: REGISTER_URL,
+        method: 'POST',
+        headers: getHeaders(),
+        data: JSON.stringify({ email, password, username, name }),
+        success: function(response) {
+           
+            if (callback) callback(null, response);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error en registro:', error);
+            const response = JSON.parse(xhr.responseText);
+            if (callback) callback(response.message, null);
+        }
+    });
+};
+
+/**
  * Verifica un token desde el almacenamiento del navegador
  */
 export const verifyToken = (callback) => {
-    const token = localStorage.getItem('token'); 
+    const token = localStorage.getItem('token');
 
     if (!token) {
         console.error('No se encontró ningún token en el almacenamiento local.');
@@ -50,13 +92,8 @@ export const verifyToken = (callback) => {
     $.ajax({
         url: VERIFY_URL,
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': API_KEY,
-            'Authorization': `Bearer ${token}`
-        },
+        headers: getHeaders(token),
         success: function(response) {
-            console.log('Token verificado:', response);
             if (callback) callback(null, response);
         },
         error: function(xhr, status, error) {
@@ -65,7 +102,6 @@ export const verifyToken = (callback) => {
         }
     });
 };
-
 
 /**
  * Cierra sesión
@@ -83,21 +119,16 @@ export const logout = (callback) => {
     $.ajax({
         url: LOGOUT_URL,
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': API_KEY,
-            'Authorization': `Bearer ${token}` 
-        },
+        headers: getHeaders(token),
         success: function(response) {
             console.log('Logout exitoso:', response);
-            localStorage.removeItem('token'); 
-
+            localStorage.removeItem('token');
             if (callback) callback(null, response);
         },
         error: function(xhr, status, error) {
             console.error('Error en logout:', error);
             const response = JSON.parse(xhr.responseText);
-            if (callback) callback(response.message, null); 
+            if (callback) callback(response.message, null);
         }
     });
 };
